@@ -4,6 +4,8 @@
     "module": "Node16",
     "esModuleInterop": true,
     "moduleResolution": "Node16",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true
