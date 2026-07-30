@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType, PrimaryKey, Default } from "sequelize-typescript";
+import { Table, Column, Model, DataType, PrimaryKey, Default, AllowNull } from "sequelize-typescript";
 
 @Table({
     tableName: "users",
@@ -15,16 +15,20 @@ export default class User extends Model {
 
     @Column({
         type: DataType.STRING,
+        allowNull:false
     })
     username!: string;
 
     @Column({
         type: DataType.STRING,
+         allowNull:false
     })
     password!: string;
 
     @Column({
         type: DataType.STRING,
+         allowNull:false,
+         unique:true
     })
     email!: string;
 
