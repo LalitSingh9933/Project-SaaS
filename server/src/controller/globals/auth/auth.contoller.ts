@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import User from "../../../model/user.model";
 import bcrypt from 'bcrypt'
 import { bytes } from "node:stream/consumers";
+import jwt from 'jsonwebtoken'
 
 class Authcontroller {
     static registerUser = async (req: Request, res: Response) => {
@@ -54,7 +55,13 @@ class Authcontroller {
             //check password,
             const isPasswordValid = bcrypt.compareSync(password, data[0].password)
             if (isPasswordValid) {
-                //sucessfully login
+                const token = jwt.sign({ id: data[0].id,name:'lalit singh'}, "secretKey", {
+                    expiresIn: "30d"
+                })
+                res.json({
+                    token,
+                    message:"successfully login"
+                })
             }
             else {
                 res.status(403).json({

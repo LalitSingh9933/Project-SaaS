@@ -1,7 +1,11 @@
 import express from 'express'
- const app = express()
- app.use(express.json())
- import authRoute from "./route/globals/auth/authRoute";
- app.use("/api/",authRoute)
+import authRoute from "./route/globals/auth/authRoute";
+import instituteRouter from "./route/institute/instituteRoute";
 
- export default app
+const app = express()
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use("/api/", authRoute)
+app.use("/api/institute", instituteRouter)
+
+export default app
